@@ -1,26 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Bookers</title>
-	<meta charset="UTF-8">
-</head>
-<body>
-    <header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <nav class="nav navbar-nav navbar-left">
-      <span>Bookers</span>
-    </nav>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-          <li><a class="glyphicon glyphicon-home home" href="/"> Home</a></li>
-          <li><a class="glyphicon glyphicon-link about" href="/home/about"> About</a></li>
-          <li><a class="glyphicon glyphicon-edit sign_up" href="/users/sign_up"> sign up</a></li>
-          <li><a class="glyphicon glyphicon-log-out logout" rel="nofollow" data-method="delete" href="/users/sign_out"> logout</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+<%= render 'users/u', user: @user, book: @book %>
+<div class="col-xs-9">
+    <h1>Books</h1>
 
-<h1>User info</h1>
-<h1>Books</h1>
-<h1>New book</h1>
+    <table class="table table-hover table-inverse">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= attachment_image_tag @user, :image, :fill, 60, 60, format: 'jpeg' %></td>
+        <td><%= @book.title %></td>
+        <td><%= @book.body %></td>
+      </tr>
+  </tbody>
+</table>
+  </div>
