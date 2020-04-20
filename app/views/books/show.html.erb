@@ -1,4 +1,5 @@
 <%= render 'users/u', user: @user, book: @book %>
+<%= flash[:success] %>
 
 <div class="col-xs-9">
 <h1>Book detail</h1>
@@ -9,10 +10,12 @@
 			<%= attachment_image_tag @user, :image, :fill, 60, 60, format: 'jpeg' %><br>
 			<%= link_to @user.name, user_path(@user.id) %>
 		</td>
-		<td><%= @book.title %></td>
-		<td><%= @book.body %></td>
-		<td><%= link_to "Edit", edit_book_path(@book.id), class:"btn-sm btn-success" %></td>
-		<td><%= link_to "Destroy", book_path(@book.id), class:"btn-sm btn-danger",method: :delete, data:{confirm: '本当に消しますか？'}%></td>
+		<td><%= link_to @booked.title, book_path(@booked.id) %></td>
+		<td><%= @booked.body %></td>
+		<% if @user == current_user %>
+		<td><%= link_to "Edit", edit_book_path(@booked.id), class:"btn-sm btn-success" %></td>
+		<td><%= link_to "Destroy", book_path(@booked.id), class:"btn-sm btn-danger",method: :delete, data:{confirm: '本当に消しますか？'}%></td>
+		<% end %>
 	</tr>
 </tbody>
 </table>

@@ -1,4 +1,8 @@
 <%= render 'users/u', user: @user, book: @book %>
+  <%= flash[:success] %>
+  <% if flash[:notice] %>
+  <%= flash[:notice] %>
+<% end %>
 <div class="col-xs-9">
     <h1>Books</h1>
 
