@@ -68,3 +68,5 @@ gem 'bootstrap-sass','~> 3.3.6'
 gem 'jquery-rails'
 gem 'pry-byebug'
 gem "jquery-rails"
+gem 'font-awesome-sass', '~> 5.4.1'
+gem 'font-awesome-rails'

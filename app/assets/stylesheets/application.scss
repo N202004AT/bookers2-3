@@ -15,6 +15,8 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 
 header{
 	color: white;
@@ -39,3 +41,4 @@ background-image: url(image5.jpg);
 #container{
 	height:500px;
 }
+

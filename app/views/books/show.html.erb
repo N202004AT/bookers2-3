@@ -12,7 +12,18 @@
 		</td>
 		<td><%= link_to @booked.title, book_path(@booked.id) %></td>
 		<td><%= @booked.body %></td>
-		<td></td>
+		<td><% if @booked.favorited_by?(current_user) %>
+			<%= link_to book_favorites_path(@booked),method: :delete do %>
+			<%= fa_icon "fa fa-heart" %>
+			<%= @booked.favorites.count %>
+			<% end %>
+			<% else %>
+			<%= link_to book_favorites_path(@booked), method: :post do %>
+			<%= fa_icon "fa fa-heart" %>
+			<%= @booked.favorites.count %>
+			<% end %>
+			<% end %>
+		</td>
 		<td>コメント数:<%= @booked.book_comments.count %></td>
 		<% if @user == current_user %>
 		<td><%= link_to "Edit", edit_book_path(@booked.id), class:"btn-sm btn-success" %></td>
@@ -36,7 +47,7 @@
 <%= book_comment.user.name %>
 <%= book_comment.created_at.strftime('%Y/%m/%d') %>
 <%= book_comment.comment %>
-<% if @user == current_user %>
+<% if book_comment.user_id == current_user.id %>
 <%= link_to "削除", book_book_comments_path(book_comment), method: :delete, data: {confirm:'削除してもよろしいですか？'} %>
 <% end %>
 <% end %>

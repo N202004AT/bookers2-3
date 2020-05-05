@@ -12,8 +12,10 @@ class BookCommentsController < ApplicationController
 	end
 	def destroy
 		@book_comment = BookComment.find(params[:book_id])
+		@book = @book_comment.book
 		if @book_comment.destroy
-		   redirect_to book_path(@book_comment.id)
+			#「.」リレーション、結びついた物を取り出す為に使う。
+		   redirect_to book_path(@book.id)
 		end
 	end
 

@@ -10,11 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_061926) do
+ActiveRecord::Schema.define(version: 2020_05_04_152050) do
 
   create_table "book_comments", force: :cascade do |t|
     t.text "comment"
+    #コメントした人のID
     t.integer "user_id"
+    #コメントされた本のID
     t.integer "book_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -24,6 +26,15 @@ ActiveRecord::Schema.define(version: 2020_05_04_061926) do
     t.string "title"
     t.string "body"
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    #いいねした人のID
+    t.integer "user_id"
+    #いいねをした本のID
+    t.integer "book_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
